@@ -3,13 +3,13 @@
 A photography and wallpaper sharing platform.
 
 #### search photos
-![search photos](/imgs/1.png | height=200)
+![search photos](/imgs/1.png)
 #### like photos
-![like photos](/imgs/2.png | height=200)
+![like photos](/imgs/2.png)
 #### OAuth login
-![OAuth login](/imgs/3.png | height=200)
+![OAuth login](/imgs/3.png)
 #### upload photos
-![upload photos](/imgs/4.png | height=200)
+![upload photos](/imgs/4.png)
 
 ## Technologies & Tools
 1. Application: Node.js, Express
