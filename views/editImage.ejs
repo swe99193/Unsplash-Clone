@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Image</title>
+    <link rel="icon" type="image/x-icon" href="http://localhost:8080/image/favicon">
+
+    <!-- nav bar (header) -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <%-include('partials/header')%>
+    </header>
+
+    <div class="container">
+        <h1>Edit image information</h1>
+        <hr />
+        <div>
+            <img src="http://localhost:8080/image/data/files/<%= image._id %>" height="400" />
+        </div>
+        <br>
+        <form method="POST">
+            <div>
+                <label for="name">Image Title</label>
+                <input type="text" id="name" name="name" placeholder="Smiley Face" size="100" value="<%= image.metadata.name %>" required />
+            </div>
+            <br>
+            <div>
+                <label for="desc">Image Description</label>
+                <textarea id="desc" name="desc" rows="5" cols="100"><%= image.metadata.desc %></textarea>
+            </div>
+            <br>
+            <div>
+                <label for="tags">Tag</label>
+                <input type="text" id="tags" name="tags" placeholder="smile, happy, emoji" size="100" value="<%= image.metadata.tags %>" />
+            </div>
+            <br>
+            <div>
+                <label for="desc">Likes:</label>
+                <%= image.metadata.likes %>
+            </div>
+            <br>
+            <div>
+                <input type="hidden" id="id" name="id" value="<%= image._id %>" required />
+            </div>
+            <br>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

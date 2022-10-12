@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Beautiful HD Wallpapers | Unsplash</title>
+    <link rel="icon" type="image/x-icon" href="http://localhost:8080/image/favicon">
+
+
+
+    <!-- nav bar (header) -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <!-- image grid -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://localhost:8080/image/js/jquery-tjgallery.min.js"></script>
+
+    <!-- image grid -->
+    <script>
+        $(function() {
+            // waiting for loading page
+            $(window).load(function() {
+                $('.pictures').tjGallery({
+                    selector: '.item',
+                    margin: 10,
+                    row_min_height: 300
+                });
+            })
+
+        })
+    </script>
+
+    <style>
+        body {
+            margin: 0px;
+            padding: 20px;
+            font-size: 14px;
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            background: #fafafa;
+        }
+        
+        .pictures {
+            font-size: 0px;
+        }
+        
+        .pictures .item {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .pictures .item img {
+            position: relative;
+            z-index: 11;
+        }
+        
+        .pictures .item .item_description {
+            position: absolute;
+            z-index: 10;
+            left: -15px;
+            top: -15px;
+            right: -15px;
+            bottom: -60px;
+            -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+            background: #151515;
+            padding: 15px;
+            display: none;
+        }
+        
+        .pictures .item .item_description span {
+            color: #ffffff;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            bottom: 15px;
+            height: 30px;
+        }
+        
+        .pictures .item:hover {
+            z-index: 100;
+        }
+        
+        .pictures .tjGalleryItem .item:hover .item_description {
+            display: block;
+        }
+        
+        .form-inputs {
+            position: relative;
+        }
+        
+        .form-inputs .form-control {
+            height: 45px;
+        }
+        
+        .form-inputs .form-control:focus {
+            box-shadow: none;
+            border: 1px solid #000;
+        }
+        
+        .form-inputs i {
+            position: absolute;
+            right: 10px;
+            top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <%-include('partials/header')%>
+    </header>
+
+    <div class="pictures">
+        <% images.forEach(function(image) { %>
+            <a href="http://localhost:8080/image/<%= image._id %>">
+                <div class="item">
+                    <div class="item_description"><span><%= image.metadata.name %> </span></div>
+                    <img src="http://localhost:8080/image/data/files/<%= image._id %>" alt="" />
+                </div>
+            </a>
+            <% }) %>
+    </div>
+
+    <footer>
+        <%-include('partials/footer')%>
+    </footer>
+    <!-- <script>
+    for(let x in )
+    {        
+        const url = "https://localhost/image/data/files?id=" + id;
+
+        fetch(url)
+        .then(response => response.blob())
+        .then(imageBlob => {
+            // Then create a local URL for that image and print it 
+            const imageObjectURL = URL.createObjectURL(imageBlob);
+            console.log(imageObjectURL);
+        });}
+    </script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <!-- nav bar -->
+    <!-- ref: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_inverse&stacked=h -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+
+    <!-- like button -->
+    <!-- ref: https://bootsnipp.com/snippets/8yNX -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link rel="stylesheet" href="css/likes_button.css" />
+</head>
+
+<body>
+    <header>
+        <%-include('partials/header')%>
+    </header>
+    <h1>Result</h1>
+
+    <div>
+        <% items.forEach(function(image) { %>
+            <div>
+                <div>
+                    <img src="data:image/<%=image.img.contentType%>;base64,
+					<%=image.img.data.toString('base64')%>" />
+                    <div>
+                        <h5>
+                            <%= image.name %>
+                        </h5>
+                        <p>
+                            <%= image._id %>
+                        </p>
+                        <p>
+                            <%= image.desc %>
+                        </p>
+                        <p>
+                            <%= image.tag %>
+                        </p>
+                        <p>
+                            <!-- like button -->
+                            <i class="bi bi-share"></i>
+                            <article class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-footer">
+                                        <h4>Likes</h4>
+                                        <span class="pull-right">
+                                            <i id="<%= image._id %>" class="glyphicon glyphicon-thumbs-up"></i>
+                                            <div id="<%= image._id %>-count"> <%= image.likes %> </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+    <footer>
+        <%-include('partials/footer')%>
+    </footer>
+    <!-- nav bar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- like button -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="/js/likes_button.js"></script>
+</body>
+
+</html>

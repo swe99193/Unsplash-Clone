@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account</title>
+    <link rel="icon" type="image/x-icon" href="http://localhost:8080/image/favicon">
+
+    <!-- nav bar (header) -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <%-include('partials/header')%>
+    </header>
+
+    <div class="container">
+        <h1>Edit account information</h1>
+        <hr />
+        <form action="/user/account" method="POST">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" size="100" value="<%= user.username %>" required disabled/>
+            </div>
+            <br>
+            <div>
+                <label for="name">name</label>
+                <input type="text" id="name" name="name" size="100" value="<%= user.name %>" required />
+            </div>
+            <br>
+            <div>
+                <label for="oauth">oauth</label>
+                <input type="text" id="oauth" name="oauth" size="100" value="<%= user.oauth %>" required disabled />
+            </div>
+            <br>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
